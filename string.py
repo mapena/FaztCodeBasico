@@ -15,3 +15,10 @@ print(mystr.count("l"))  # cuantes veces esta la letra "l"
 print(mystr.startswith("h")) # retorna True por que el valor de la variable comienza con "h"
 print(mystr.endswith("word")) # retorna True por que el valor de la variable termina con"word"
 
+mystr = "hello word amigos" 
+print(mystr.split()) # separa el texto en palabras separador blano x default
+
+mystr = "hello,word amigos" 
+print(mystr.split(",")) # separa el texto en palabras defino separador = ","
+
+print(mystr.find("o")) # fusca la primera posicion que aparece la "o"
