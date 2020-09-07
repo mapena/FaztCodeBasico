@@ -1,0 +1,20 @@
+pipenv shell >>> crea nuevo entorno virtual
+pipenv install colorama >>> instala colorama		
+pipenv lock -r >> regenera el pipfilelock nos dice todas las dependencias que necesita
+pipenv uninstall colorama >>> desinstala colorama
+pipenv install colorama --dev >>> instala colorama solo para el ambiente DEV
+
+archivo REQUIREMENTS.TXT  >>> sirve para cargar los pip install
+        Django==1.2.3  instala Django version 1.2.3
+para que instale desde el archivo REQUIREMENTS : pipenv install -r requierements.txt
+pipenv graph >>> muestra las dependencias en forma grafica
+pipenv check >>> nos dice si hay alguna dependencia con problemas de seguridad p
+                 en caso de tener podemos actualizar el componente haciendo pipenv install 
+				 (instala todo de nuevo a la version mas nueva)
+una vez termiado el proyecto ejecutar pipenv lock para que genere el pipfilelock version final
+
+pipenv install --ignore-pipfile  (ignora el archivo pipfile y toma el pipfilelock para instalar las dependencia.
+               esto se usa cuando vas a desplegar una version dado que instala las dependencias con una version determinada
+               y no la ultima version de la dependencia
+exit sale del env.
+pipenv --rm remueve el entorno virtual (osea lo borra)
