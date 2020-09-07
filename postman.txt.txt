@@ -1,0 +1,12 @@
+headers
+Content-Type  application/json
+
+body (raw)
+{
+ "username" : "Fazt4",
+ "password" : "contrase",
+ "email" : ""
+
+ }
+ 
+ el email vacio para que salte el error.
