@@ -10,3 +10,8 @@ body (raw)
  }
  
  el email vacio para que salte el error.
+
+ 200 ok
+ 300 redirect
+ 400 client error
+ 500 server error
