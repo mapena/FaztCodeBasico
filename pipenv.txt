@@ -18,3 +18,6 @@ pipenv install --ignore-pipfile  (ignora el archivo pipfile y toma el pipfileloc
                y no la ultima version de la dependencia
 exit sale del env.
 pipenv --rm remueve el entorno virtual (osea lo borra)
+
+
+ver [09/Sep/2020 09:33:49] "?[37mGET /users HTTP/1.1?[0m" 200 -

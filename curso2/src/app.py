@@ -1,7 +1,8 @@
-from flask import Flask, jsonify, request, Response
+from flask import Flask, request, Response # Response para devolver al cliente un mensaje
+from flask import jsonify  #para manejar mejor el codigo de retorno del servidor al cliente por ejemplo ver response.status.code =404
 from flask_pymongo import PyMongo
-from bson import json_util
-from bson.objectid import ObjectId
+from bson import json_util  #para convertir los formatos bson (que usa mongodb) a json
+from bson.objectid import ObjectId # sirve para convertir un objeto str a objeto mongodb
 import json
 
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -38,7 +39,7 @@ def leo_argumentos(nombre = "ninguno",numero="nada"):
     """
     return 'el argumento es es {} {}'.format(nombre,numero)
 #------------------------------------------------------------------------------------------------
-@app.route('/users', methods=['POST'])
+@app.route('/users', methods=['POST']) # con post es para recibir el servidor
 def create_user():
     # Receiving Data
     username = request.json['username']
@@ -48,10 +49,11 @@ def create_user():
     if username and email and password: #pregunto si existe username y email y password
         
         hashed_password = generate_password_hash(password)
-        id = mongo.db.users.insert(
-            {'username': username, 'email': email, 'password': hashed_password})
+        # mongodb cuando inserta genera un id (mongodb trabaja formato json)
+        id = mongo.db.users.insert({'username': username, 'email': email, 'password': hashed_password})
+        
         response = jsonify({
-            '_id': str(id),
+            '_id': str(id),       ## id es de formato objectID x eso lo convierto a str
             'username': username,
             'password': password,
             'email': email
@@ -63,18 +65,40 @@ def create_user():
         return not_found()
 
 
-@app.route('/users', methods=['GET'])
+@app.route('/users', methods=['GET'])  # cunado se le piede info al servidor
 def get_users():
-    users = mongo.db.users.find()
-    response = json_util.dumps(users)
+    users = mongo.db.users.find() # mongodb guarda los datos en formato bson,
+    """
+     users queda de tipo ==> 'pymongo.cursor.Cursor'  (bson)
+     para manipular mejor los datos se convertira la variable "users" a formato json
+     para eso usamos la libreria json_util.dumps
+
+    """
+    response = json_util.dumps(users) # response quedo en formato json
+    """
+    para responder usaremos el objeto Response >>(from flask import  Response)
+    donde indicamos que la respuesta es de formato json (application/json)
+    asi recive el cliente:
+     {
+        "_id": {
+            "$oid": "5f56a4ee4d459dbf3d029e03"   ==> Object_id de mongodb
+        },
+        "username": "Fazt",
+        "email": "xx@gmail.com",
+        "password": "pbkdf2:sha256:150000$iMvpRMZy$e84caedf578beaac1f0a91159ce5acd11f0574f1969123c803c847fed2adc0be"
+    }
+    """
     return Response(response, mimetype="application/json")
 
 
-@app.route('/users/<id>', methods=['GET'])
+@app.route('/users/<id>', methods=['GET']) # se le pasa por parametro en <id> el objectID de mongodb
 def get_user(id):
     print(id)
-    user = mongo.db.users.find_one({'_id': ObjectId(id), })
+    # la variable id la debo convertir a formato $oid de mongodb
+    user = mongo.db.users.find_one({'_id': ObjectId(id), })  # find_one me trae un registro, si hay mas de uno, solo trae el primero
+    #user quedo en formato bson y con json_util.dumos lo convierto a json
     response = json_util.dumps(user)
+    # si return response devolveria con formato str , como quiero responder en formato json uso el Response
     return Response(response, mimetype="application/json")
 
 
@@ -95,6 +119,7 @@ def update_user(_id):
         hashed_password = generate_password_hash(password)
         mongo.db.users.update_one(
             {'_id': ObjectId(_id['$oid']) if '$oid' in _id else ObjectId(_id)}, {'$set': {'username': username, 'email': email, 'password': hashed_password}})
+        
         response = jsonify({'message': 'User' + _id + 'Updated Successfuly'})
         response.status_code = 200
         return response
@@ -102,12 +127,14 @@ def update_user(_id):
       return not_found()
 
 
-@app.errorhandler(404)
+@app.errorhandler(404)  #manejador de errores
 def not_found(error=None):
     message = {
         'message': 'Resource Not Found ' + request.url,
         'status': 404
     }
+    # a continuacion se guarda el message en un objeto json hace que se pueda usar mas propiedades del obj. como
+    # por ejemplo .status.code = 404
     response = jsonify(message)
     response.status_code = 404
     return response
