@@ -99,8 +99,9 @@ def get_user(id):
     #user quedo en formato bson y con json_util.dumos lo convierto a json
     response = json_util.dumps(user)
     # si return response devolveria con formato str , como quiero responder en formato json uso el Response
+    # indicamos que la respuesta es de formato json (application/json)
     return Response(response, mimetype="application/json")
-
+ 
 
 @app.route('/users/<id>', methods=['DELETE'])
 def delete_user(id):
@@ -109,8 +110,8 @@ def delete_user(id):
     response.status_code = 200
     return response
 
-
-@app.route('/users/<_id>', methods=['PUT'])
+# peticiones http => put,get,delete,post
+@app.route('/users/<_id>', methods=['PUT']) #para actualizar tambien se usa el metodo PATH, que se usa para actualizar 1 solo dato
 def update_user(_id):
     username = request.json['username']
     email = request.json['email']
