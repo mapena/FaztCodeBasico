@@ -7,6 +7,24 @@ import json
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
+#---------------------------------
+#---------------------------------
+import os
+
+os.system("")
+
+# Group of Different functions for different styles
+class style():
+    RED = '\033[31m'
+    WHITE = '\033[37m'
+    UNDERLINE = '\033[4m'
+    RESET = '\033[0m'
+
+print(style.RED + "Hello, World!")
+print(style.RESET + "Hello, World!")
+#---------------------------------
+#---------------------------------
+
 app = Flask(__name__)
 
 app.secret_key = 'myawesomesecretkey'
