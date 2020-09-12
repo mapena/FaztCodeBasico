@@ -1,4 +1,5 @@
 def funcion1():
+    print("fun1")
     try:
         5/0
     except ZeroDivisionError:
@@ -7,18 +8,20 @@ def funcion1():
 
 
 def funcion2():
+    print("fun2")
     try:
-        open("/home/mitocode/no_file.txt","r")
+        f = open("c:\\Users\mp\Desktop\Archivo.txt", "r")
     except IOError:
         print("No existe archivo")
+       # raise si se habilita la sentencia raise el programa cancela
     return
 
-
 def funcion3():
+    print("fun3")
     archivo = None
     try:
         # 5/0
-        archivo = open("/home/mitocode/no_file.txt", "r")
+        archivo = open("c:\\Users\mp\Desktop\Archivo.txt", "r")
         # float("MitoCode")
     except ZeroDivisionError:
         print("División no válida")
@@ -35,10 +38,13 @@ def funcion3():
 
 
 def funcion4():
+    print("fun4")
     try:
         # open("/home/mitocode/no_file.txt", "r")
-        raise ValueError("No se encuentra el tipo de dato")
-        raise Exception("Error general")
+        ## raise ValueError()
+        #raise TypeError("...type error...")
+        raise Exception("...exception...")
+        
     except ValueError as ex:
         # print(ex)
         raise
@@ -47,7 +53,7 @@ def funcion4():
     return
 
 
-# funcion1()
-# funcion2()
-# funcion3()
+funcion1()
+funcion2()
+funcion3()
 funcion4()
