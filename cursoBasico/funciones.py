@@ -3,25 +3,34 @@ def hello(var="cachirulo"): # var="cachirulo" se define un valor x defaul en cas
 
 hello("marce")
 hello()
-
+#-------------------------------------------------------------------------------------------------------
 def sumar(n1,n2): # retorna un valor al funcion
     return n1+n2
 
 print(sumar(10,5))
-
+#-------------------------------------------------------------------------------------------------------
 add2 = lambda n1,n2 : n1+n2 # funcion lambda se define en el momento
 print(add2(5,3))            # add2 = nombre de la funcion
                             # n1,n2 = variables de entrada
-                            # : fin de los
+                            # : fin de los parametros
                             # n1+n2 es lo que tiene que hacer la funcion
-
+#-------------------------------------------------------------------------------------------------------
 def sumar(number1, number2=20):
     print (number1) # 15
     print (number2) # 10
     print (number1 + number2)
 
 sumar(number2=10, number1=15) # 25 se le pasa a la funcion los parametros con sus valores
-
+#-------------------------------------------------------------------------------------------------------
+print("mi_funcion")
+def mi_funcion(n1, n2,*nn): #*nn va a recibir una lista de parametros
+    print(n1)
+    print(n2)
+    for x in nn:
+        print("x=",x)
+    return
+mi_funcion(1,2,3,4,"aaa aa","bbb bb",5,6)
+#-------------------------------------------------------------------------------------------------------
 def sumar(**numbers):  # se recibe dictionarios como parametros
     print (numbers) # {'number1' : 10, 'number2' : 20}
     print (numbers['number1'] + numbers['number2'])
@@ -73,5 +82,11 @@ def concat(*args, sep="|"):
 
 print(concat("earth", "mars", "venus"))
 print(concat("earth", "mars", "venus", sep="."))
+#-------------------------------------------------------------------------------------------------------
+
+
+
+
+
 
 

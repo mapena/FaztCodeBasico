@@ -15,3 +15,6 @@ listprod=[
     {"nombre": "libro2", "cantida": 6}
 ]
 print(listprod)
+
+for k, v in productos.items():
+    print("Llave " + str(k) + " Valor " + str(v))

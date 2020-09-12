@@ -22,3 +22,14 @@ x = 1
 while x < 10:
     print("x",x)
     x += 1  #  += es igual a x= x + 1
+
+for x in range(3):
+    print("Iteración N° " + str(x))
+    if x == 1:
+        print("Se corto la interación N° " + str(x))
+        break
+
+for x in "Mit0C0de":
+    if x.isdigit():
+        print("Es número")
+    print(x, end="\n")
