@@ -73,9 +73,10 @@ combined_example(1, standard=2, kwd_only=3)
                                                     # y no se debe mandar el nombre del parametro
 def foo(name, /, **kwds):
     print("foo")
-    return 'name' in kwds
+    return 'name' in kwds  # la  funcion devuelve true si la cadena "name" esta en kwds
 
-foo(1, **{'name': 2})                                                
+foo(1, **{'name': 2})  
+print("foo= ",foo(1, **{'name': 2})  )                                              
 #----------------------------------------------------------------------------------
 def concat(*args, sep="|"):
      return sep.join(args)
