@@ -22,8 +22,9 @@ def sumar(number1, number2=20):
 
 sumar(number2=10, number1=15) # 25 se le pasa a la funcion los parametros con sus valores
 #-------------------------------------------------------------------------------------------------------
-print("mi_funcion")
+
 def mi_funcion(n1, n2,*nn): #*nn va a recibir una lista de parametros
+    print("mi_funcion")
     print(n1)
     print(n2)
     for x in nn:
@@ -84,7 +85,11 @@ def concat(*args, sep="|"):
 print(concat("earth", "mars", "venus"))
 print(concat("earth", "mars", "venus", sep="."))
 #-------------------------------------------------------------------------------------------------------
-
+print("defino una tupla para pasar x parametro")
+def calculotupla(a,b):
+    return print(a*b)
+tupla = (10,7)
+calculotupla(*tupla) # se pasa una tupla con * para que sea por parametro
 
 
 
