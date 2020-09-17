@@ -1,8 +1,0 @@
-mongo db esta instalado en :
-c:\Program Files\MongoDB\Server\4.4\bin>mongo.exe
-
-show databases;
-use pythonmongodb
-show collections  => me dice las tablas
-db.users.find() => me devuelve todo el contendio de la tablas
-db.users.find().pretty() => me devuelve todo el contendio de la tablas formateado tipo json
