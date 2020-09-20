@@ -1,0 +1,41 @@
+creacion paquete de instalacion ==> *.tar.gz
+--------------------------------------------
+C:\gh\modulosej>python setup.py sdist
+
+running sdist
+running egg_info
+creating paquete_suma_resta.egg-info
+writing paquete_suma_resta.egg-info\PKG-INFO
+writing dependency_links to paquete_suma_resta.egg-info\dependency_links.txt
+writing top-level names to paquete_suma_resta.egg-info\top_level.txt
+writing manifest file 'paquete_suma_resta.egg-info\SOURCES.txt'
+reading manifest file 'paquete_suma_resta.egg-info\SOURCES.txt'
+writing manifest file 'paquete_suma_resta.egg-info\SOURCES.txt'
+warning: sdist: standard file not found: should have one of README, README.rst, README.txt, README.md
+running check
+creating paquete_suma_resta-2.0.0
+creating paquete_suma_resta-2.0.0\libreria
+creating paquete_suma_resta-2.0.0\libreria\libresta
+creating paquete_suma_resta-2.0.0\paquete_suma_resta.egg-info
+copying files to paquete_suma_resta-2.0.0...
+copying setup.py -> paquete_suma_resta-2.0.0
+copying libreria\__init__.py -> paquete_suma_resta-2.0.0\libreria
+copying libreria\fmathsum.py -> paquete_suma_resta-2.0.0\libreria
+copying libreria\libresta\__init__.py -> paquete_suma_resta-2.0.0\libreria\libresta
+copying libreria\libresta\fmathres.py -> paquete_suma_resta-2.0.0\libreria\libresta
+copying paquete_suma_resta.egg-info\PKG-INFO -> paquete_suma_resta-2.0.0\paquete_suma_resta.egg-info
+copying paquete_suma_resta.egg-info\SOURCES.txt -> paquete_suma_resta-2.0.0\paquete_suma_resta.egg-info
+copying paquete_suma_resta.egg-info\dependency_links.txt -> paquete_suma_resta-2.0.0\paquete_suma_resta.egg-info
+copying paquete_suma_resta.egg-info\top_level.txt -> paquete_suma_resta-2.0.0\paquete_suma_resta.egg-info
+Writing paquete_suma_resta-2.0.0\setup.cfg
+creating dist
+Creating tar archive
+removing 'paquete_suma_resta-2.0.0' (and everything under it)
+
+para instalar el paquete, el es archivo .tar.gz de la carpeta dist
+------------------------------------------------------------------
+C:\gh\modulosej>pip install paquete_suma_resta-2.0.0.tar.gz
+
+para desinstalar el paquete
+---------------------------
+C:\gh\modulosej>pip uninstall paquete_suma_resta-2.0.0

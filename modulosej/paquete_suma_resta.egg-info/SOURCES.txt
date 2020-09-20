@@ -1,0 +1,9 @@
+setup.py
+libreria/__init__.py
+libreria/fmathsum.py
+libreria/libresta/__init__.py
+libreria/libresta/fmathres.py
+paquete_suma_resta.egg-info/PKG-INFO
+paquete_suma_resta.egg-info/SOURCES.txt
+paquete_suma_resta.egg-info/dependency_links.txt
+paquete_suma_resta.egg-info/top_level.txt
